@@ -37,16 +37,13 @@ Login to the target machine and execute the following commands:
 
 .. code-block:: shell
 
-  sudo apt install -y gdal-bin
+  sudo apt install -y python3-gdal=3.3.2+dfsg-2~focal2 gdal-bin=3.3.2+dfsg-2~focal2 libgdal-dev=3.3.2+dfsg-2~focal2
   sudo apt install -y python3-pip python3-dev python3-virtualenv python3-venv virtualenvwrapper
   sudo apt install -y libxml2 libxml2-dev gettext
-  sudo apt install -y libxslt1-dev libjpeg-dev libpng-dev libpq-dev libgdal-dev
+  sudo apt install -y libxslt1-dev libjpeg-dev libpng-dev libpq-dev
   sudo apt install -y software-properties-common build-essential
   sudo apt install -y git unzip gcc zlib1g-dev libgeos-dev libproj-dev
   sudo apt install -y sqlite3 spatialite-bin libsqlite3-mod-spatialite
-
-  # If the following does not work, you can skip it
-  sudo apt install -y libgdal-dev
 
 Docker Setup (First time only)
 ..............................
@@ -87,16 +84,13 @@ Login to the target machine and execute the following commands:
 .. code-block:: shell
 
   sudo yum -y install epel-release
-  sudo yum install -y gdal
+  sudo yum install -y python3-gdal=3.3.2+dfsg-2~focal2 gdal-bin=3.3.2+dfsg-2~focal2 libgdal-dev=3.3.2+dfsg-2~focal2
   sudo yum install -y python3-pip python3-dev python3-virtualenv python3-venv virtualenvwrapper
   sudo pip3 install -U pip
   sudo pip3 install -U virtualenv
   sudo yum install -y libxml2 libxml2-dev gettext
-  sudo yum install -y libxslt1-dev libjpeg-dev libpng-dev libpq-dev libgdal-dev
+  sudo yum install -y libxslt1-dev libjpeg-dev libpng-dev libpq-dev
   sudo yum install -y git unzip gcc zlib1g-dev libgeos-dev libproj-dev
-
-  # If the following does not work, you can skip it
-  sudo apt install -y libgdal-dev
 
 Docker Setup (First time only)
 ..............................
@@ -824,8 +818,8 @@ In order to do that, follow the procedure below:
 .. code-block:: shell
 
     # Update the GeoServer WEB-INF/lib JARs accordingly
-    wget --no-check-certificate "https://www.dropbox.com/s/psolxleimaft0t7/postgis-jdbc-1.3.3.jar?dl=1" -O postgis-jdbc-1.3.3.jar && \
-    wget --no-check-certificate "https://www.dropbox.com/s/ilowu1vd27j2cs1/hibernate-spatial-postgis-1.1.3.2.jar?dl=1" -O hibernate-spatial-postgis-1.1.3.2.jar && \
+    wget --no-check-certificate "https://repo1.maven.org/maven2/org/postgis/postgis-jdbc/1.3.3/postgis-jdbc-1.3.3.jar" -O postgis-jdbc-1.3.3.jar && \
+    wget --no-check-certificate "https://maven.geo-solutions.it/org/hibernatespatial/hibernate-spatial-postgis/1.1.3.2/hibernate-spatial-postgis-1.1.3.2.jar" -O hibernate-spatial-postgis-1.1.3.2.jar && \
     rm /usr/local/tomcat/webapps/geoserver/WEB-INF/lib/hibernate-spatial-h2-geodb-1.1.3.1.jar && \
     mv hibernate-spatial-postgis-1.1.3.2.jar /usr/local/tomcat/webapps/geoserver/WEB-INF/lib/ && \
     mv postgis-jdbc-1.3.3.jar /usr/local/tomcat/webapps/geoserver/WEB-INF/lib/
